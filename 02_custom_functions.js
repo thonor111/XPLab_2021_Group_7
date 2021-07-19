@@ -55,6 +55,8 @@ const time_limit = function(data, next) {
 check_response = function(data, next) {
     $('input[name=answer]').on('change', function(e) {
         important_topic = e.target.value;
+        console.log(typeof important_topic);
+        console.log(important_topic);
     })
 }
 

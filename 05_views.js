@@ -103,14 +103,14 @@ const thanks = magpieViews.view_generator("thanks", {
 
 
 // Here, we initialize a normal forced_choice view
-const forced_choice_2A = magpieViews.view_generator(
+const topic_choice_trial = magpieViews.view_generator(
   "sentence_choice",
   {
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-    trials: trial_info.forced_choice.length,
+    trials: trial_info.topic_choice.length,
     // name should be identical to the variable name
-    name: 'forced_choice_2A',
-    data: trial_info.forced_choice,
+    name: 'topic_choice_trial',
+    data: trial_info.topic_choice,
     // you can add custom functions at different stages through a view's life cycle
     hook: {
         after_response_enabled: check_response
@@ -146,6 +146,20 @@ const forced_choice_2A = magpieViews.view_generator(
     }
   }
 );
+
+const hasTopic = (element) => element.topic === important_topic;
+
+const group_rating_trial = magpieViews.view_generator('rating_scale', {
+  // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+  trials: trial_info.group_rating.slice(trial_info.group_rating.findIndex(hasTopic)).length,
+  // name should be identical to the variable name
+  name: 'group_rating',
+  data: trial_info.group_rating.slice(trial_info.group_rating.findIndex(hasTopic)),
+  // you can add custom functions at different stages through a view's life cycle
+  /*hook: {
+      after_response_enabled: check_response
+  }*/
+});
 
 /*
 const topic_choice_trial = magpieViews.view_generator('sentence_choice', {
