@@ -147,19 +147,33 @@ const topic_choice_trial = magpieViews.view_generator(
   }
 );
 
-const hasTopic = (element) => element.topic === important_topic;
+const hasTopic = (element) => element.topic == important_topic;
 
-const group_rating_trial = magpieViews.view_generator('rating_scale', {
-  // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-  trials: trial_info.group_rating.slice(trial_info.group_rating.findIndex(hasTopic)).length,
-  // name should be identical to the variable name
-  name: 'group_rating',
-  data: trial_info.group_rating.slice(trial_info.group_rating.findIndex(hasTopic)),
-  // you can add custom functions at different stages through a view's life cycle
-  /*hook: {
-      after_response_enabled: check_response
-  }*/
-});
+var group_rating_trial = magpieViews.view_generator(
+  'rating_scale',
+  {
+    // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    trials: 1,
+    // name should be identical to the variable name
+    name: 'group_rating',
+    data: trial_info.group_rating
+    // you can add custom functions at different stages through a view's life cycle
+    /*hook: {
+        after_response_enabled: check_response
+    }*/
+  },
+  {
+    stimulus_container_generator: function (config, CT) {
+      return `<div class='magpie-view'>
+        <h1 class='magpie-view-title'>${config.title}</h1>
+        <p class='magpie-view-question magpie-view-qud'>${important_topic}</p>
+        <div class='magpie-view-stimulus-container'>
+            <div class='magpie-view-stimulus magpie-nodisplay'></div>
+        </div>
+      </div>`;
+    }
+  }
+);
 
 /*
 const topic_choice_trial = magpieViews.view_generator('sentence_choice', {

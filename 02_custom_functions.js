@@ -7,6 +7,7 @@
 const coin = _.sample(["head", "tail"]); // You can determine global (random) parameters here
 
 var important_topic;
+var group_rating_trial;
 // Declare your variables here
 
 
@@ -55,8 +56,7 @@ const time_limit = function(data, next) {
 check_response = function(data, next) {
     $('input[name=answer]').on('change', function(e) {
         important_topic = e.target.value;
-        console.log(typeof important_topic);
-        console.log(important_topic);
+        initialize_trials();
     })
 }
 
@@ -67,3 +67,40 @@ check_response = function(data, next) {
 *
 *
 */
+
+const has_topic = (element) => element.topic == important_topic;
+
+const get_trial_by_topic = function(trials) {
+    return(trials.slice(trials.findIndex(has_topic), trials.findIndex(has_topic) + 1));
+}
+
+const initialize_trials = function() {
+    // console.log("in intitialize");
+    // console.log(important_topic)
+    // group_rating_trial = magpieViews.view_generator('rating_scale', {
+    //     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    //     trials: get_trial_by_topic(trial_info.group_rating).length,
+    //     // name should be identical to the variable name
+    //     name: 'group_rating',
+    //     data: get_trial_by_topic(trial_info.group_rating)
+    //     // you can add custom functions at different stages through a view's life cycle
+    //     /*hook: {
+    //         after_response_enabled: check_response
+    //     }*/
+    //   });
+
+    trial_info.group_rating = get_trial_by_topic(trial_info.group_rating);
+    console.log("new trials:");
+    console.log(trial_info.group_rating);
+    group_rating_trial = magpieViews.view_generator('rating_scale', {
+        // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+        trials: 1,
+        // name should be identical to the variable name
+        name: 'group_rating',
+        data: trial_info.group_rating
+        // you can add custom functions at different stages through a view's life cycle
+        /*hook: {
+            after_response_enabled: check_response
+        }*/
+      });
+}

@@ -1,7 +1,7 @@
 // In this file you can specify the trial data for your experiment
 
 
-const trial_info = {
+var trial_info = {
     topic_choice: [
         {
             question: "What's most important topic for you?",
