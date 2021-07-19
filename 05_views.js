@@ -103,18 +103,76 @@ const thanks = magpieViews.view_generator("thanks", {
 
 
 // Here, we initialize a normal forced_choice view
-const forced_choice_2A = magpieViews.view_generator("forced_choice", {
+const forced_choice_2A = magpieViews.view_generator(
+  "sentence_choice",
+  {
+    // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    trials: trial_info.forced_choice.length,
+    // name should be identical to the variable name
+    name: 'forced_choice_2A',
+    data: trial_info.forced_choice,
+    // you can add custom functions at different stages through a view's life cycle
+    hook: {
+        after_response_enabled: check_response
+    }
+  },
+  {
+    stimulus_container_generator: function (config, CT) {
+      return `<div class='magpie-view'>
+              </div>`;
+    },
+    answer_container_generator: function(config, CT) {
+      return `<div class='magpie-view-answer-container'>
+                  <p class='magpie-view-question'>${config.data[CT].question}</p>
+                  <label for='s1' class='magpie-response-sentence'>${config.data[CT].option1}</label>
+                  <input type='radio' name='answer' id='s1' value="${config.data[CT].option1}" />
+                  <label for='s2' class='magpie-response-sentence'>${config.data[CT].option2}</label>
+                  <input type='radio' name='answer' id='s2' value="${config.data[CT].option2}" />
+                  <label for='s3' class='magpie-response-sentence'>${config.data[CT].option3}</label>
+                  <input type='radio' name='answer' id='s3' value="${config.data[CT].option3}" />
+                  <label for='s4' class='magpie-response-sentence'>${config.data[CT].option4}</label>
+                  <input type='radio' name='answer' id='s4' value="${config.data[CT].option4}" />
+                  <label for='s5' class='magpie-response-sentence'>${config.data[CT].option5}</label>
+                  <input type='radio' name='answer' id='s5' value="${config.data[CT].option5}" />
+                  <label for='s6' class='magpie-response-sentence'>${config.data[CT].option6}</label>
+                  <input type='radio' name='answer' id='s6' value="${config.data[CT].option6}" />
+                  <label for='s7' class='magpie-response-sentence'>${config.data[CT].option7}</label>
+                  <input type='radio' name='answer' id='s7' value="${config.data[CT].option7}" />
+                  <label for='s8' class='magpie-response-sentence'>${config.data[CT].option8}</label>
+                  <input type='radio' name='answer' id='s8' value="${config.data[CT].option8}" />
+                  <label for='s9' class='magpie-response-sentence'>${config.data[CT].option9}</label>
+                  <input type='radio' name='answer' id='s9' value="${config.data[CT].option9}" />
+              </div>`;
+    }
+  }
+);
+
+/*
+const topic_choice_trial = magpieViews.view_generator('sentence_choice', {
   // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-  trials: trial_info.forced_choice.length,
+  trials: topic_choice.length,
   // name should be identical to the variable name
-  name: 'forced_choice_2A',
-  data: trial_info.forced_choice,
+  name: 'topic_choice',
+  data: topic_choice,
   // you can add custom functions at different stages through a view's life cycle
-  // hook: {
-  //     after_response_enabled: check_response
-  // }
+  hook: {
+      after_response_enabled: check_response
+  }
 });
 
+const dilemma_trial = magpieViews.view_generator('rating_scale', {
+  // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+  trials: rating_scale.length,
+  // name should be identical to the variable name
+  name: 'dilemma',
+  data: dilemma,
+  optionLeft: 'call the police and report the robber',
+  optionRight: 'do nothing and leave the robber alone',
+  // you can add custom functions at different stages through a view's life cycle
+  hook: {
+      after_response_enabled: check_response
+  }
+});*/
 // There are many more templates available:
 // forced_choice, slider_rating, dropdown_choice, testbox_input, rating_scale, image_selection, sentence_choice,
 // key_press, self_paced_reading and self_paced_reading_rating_scale

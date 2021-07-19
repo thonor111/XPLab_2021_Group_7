@@ -5,6 +5,8 @@
 *
 */
 const coin = _.sample(["head", "tail"]); // You can determine global (random) parameters here
+
+var important_topic;
 // Declare your variables here
 
 
@@ -52,12 +54,7 @@ const time_limit = function(data, next) {
 // compares the chosen answer to the value of `option1`
 check_response = function(data, next) {
     $('input[name=answer]').on('change', function(e) {
-        if (e.target.value === data.correct) {
-            alert('Your answer is correct! Yey!');
-        } else {
-            alert('Sorry, this answer is incorrect :( The correct answer was ' + data.correct);
-        }
-        next();
+        important_topic = e.target.value;
     })
 }
 

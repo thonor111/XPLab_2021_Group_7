@@ -4,18 +4,16 @@
 const trial_info = {
     forced_choice: [
         {
-            question: "What's on the bread?",
-            picture: "images/question_mark_02.png",
-            option1: 'jam',
-            option2: 'ham',
-            correct: 'jam'
-        },
-        {
-            question: "What's the weather like?",
-            picture: "images/weather.jpg",
-            option1: "shiny",
-            option2: "rainbow",
-            correct: "shiny"
+            question: "What's most important topic for you?",
+            option1: 'Gun control',
+            option2: 'Feminism',
+            option3: 'Donald Trump',
+            option4: 'Immigration and Dreamers',
+            option5: 'Transgender rights',
+            option6: 'Drug legalization',
+            option7: 'Colin Kaepernick kneeling during the national anthem',
+            option8: 'Buying and wearing fur',
+            option9: 'Taxing religious organization',
         }
     ]
 };
