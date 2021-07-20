@@ -72,8 +72,8 @@ check_response = function(data, next) {
 
 const has_topic = (element) => element.topic == important_topic;
 
-const get_trial_by_topic = function(trials) {
-    return(trials.slice(trials.findIndex(has_topic), trials.findIndex(has_topic) + 1));
+const get_trials_by_topic = function(trials) {
+    return(trials.filter(has_topic));
 }
 
 const initialize_trials = function() {
@@ -91,9 +91,7 @@ const initialize_trials = function() {
     //     }*/
     //   });
 
-    trial_info.group_rating = get_trial_by_topic(trial_info.group_rating);
-    console.log("new trials:");
-    console.log(trial_info.group_rating);
+    trial_info.group_rating = get_trials_by_topic(trial_info.group_rating);
     group_rating_trial = magpieViews.view_generator('rating_scale', {
         // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
         trials: 1,
@@ -105,6 +103,8 @@ const initialize_trials = function() {
             after_response_enabled: check_response
         }*/
     });
+
+    trial_info.identification = get_trials_by_topic(trial_info.identification);
 }
 
 const get_group_decisions =function() {
