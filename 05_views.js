@@ -208,7 +208,7 @@ var group_rating_trial = magpieViews.view_generator(
 );
 
 
-var dilemma_trial = magpieViews.view_generator(
+const dilemma_trial = magpieViews.view_generator(
   'rating_scale',
   {
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
@@ -231,6 +231,48 @@ var dilemma_trial = magpieViews.view_generator(
     },
     answer_container_generator: function(config, CT) {
       return `<p class='magpie-view-question'></p>
+              <div class='magpie-view-answer-container'>
+                  <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option1}</strong>
+                  <label for="1" class='magpie-response-rating'>-3</label>
+                  <input type="radio" name="answer" id="3" value="-3" />
+                  <label for="2" class='magpie-response-rating'>-2</label>
+                  <input type="radio" name="answer" id="4" value="-2" />
+                  <label for="3" class='magpie-response-rating'>-1</label>
+                  <input type="radio" name="answer" id="5" value="-1" />
+                  <label for="4" class='magpie-response-rating'>1</label>
+                  <input type="radio" name="answer" id="7" value="1" />
+                  <label for="5" class='magpie-response-rating'>2</label>
+                  <input type="radio" name="answer" id="8" value="2" />
+                  <label for="6" class='magpie-response-rating'>3</label>
+                  <input type="radio" name="answer" id="9" value="3" />
+                  <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option2}</strong>
+              </div>`;
+    }
+  }
+);
+
+const feeling_trial = magpieViews.view_generator(
+  'rating_scale',
+  {
+    // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    trials: trial_info.feeling.length,
+    // name should be identical to the variable name
+    name: 'feeling_trial',
+    data: trial_info.feeling
+    // you can add custom functions at different stages through a view's life cycle
+    /*hook: {
+        after_response_enabled: check_response
+    }*/
+  },
+  {
+    stimulus_container_generator: function (config, CT) {
+      return `<div class='magpie-view'>
+        <h1 class='magpie-view-title'>${"Your feeling about the decision"}</h1>
+        <p class='magpie-view-question'>${`<br /><br /><br /><br />`}</p>
+      </div>`;
+    },
+    answer_container_generator: function(config, CT) {
+      return `<p class='magpie-view-question'>${config.data[CT].question}</p>
               <div class='magpie-view-answer-container'>
                   <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option1}</strong>
                   <label for="1" class='magpie-response-rating'>-3</label>

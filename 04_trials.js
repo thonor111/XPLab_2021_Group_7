@@ -78,5 +78,12 @@ var trial_info = {
             option1: "Definitely call the police and report the robber",
             option2: "Definitely do nothing and leave the robber alone"
         }
+    ],
+    feeling: [
+        {
+            question: "How do you feel about your choice?",
+            option1: "I have a very bad feeling",
+            option2: "I have a very good feeling"
+        }
     ]
 };

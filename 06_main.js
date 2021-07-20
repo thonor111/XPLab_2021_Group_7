@@ -20,6 +20,7 @@ $("document").ready(function() {
             group_rating_trial,
             instructions,
             dilemma_trial,
+            feeling_trial,
             post_test,
             thanks,
         ],
