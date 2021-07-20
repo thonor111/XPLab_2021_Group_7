@@ -16,9 +16,10 @@ $("document").ready(function() {
         // You have to specify all views you want to use in this experiment and the order of them
         views_seq: [
             intro,
-            instructions,
             topic_choice_trial,
             group_rating_trial,
+            instructions,
+            dilemma_trial,
             post_test,
             thanks,
         ],

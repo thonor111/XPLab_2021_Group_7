@@ -39,11 +39,14 @@ const instructions = magpieViews.view_generator("instructions", {
   trials: 1,
   name: 'instructions',
   title: 'General Instructions',
-  text: `This is a sample instructions view.
-            <br />
-            <br />
-            Tell your participants what they are to do here.`,
-  buttonText: 'go to trials'
+  text: `We are following up on a previously published paper that looked at how people feel about moral dilemmas.
+          <br />
+          In the previous paper, a moral dilemma was described that involved two possible courses of actions.
+          Participants chose which action they preferred and had to rate how they would feel about performing that action.
+          <br />
+          In this study, you will be presented with a scenario describing a moral dilemma.
+          You will choose which action you would take and then provide a rating of how good or bad you imagine you would feel after taking that action.`,
+  buttonText: 'go to the trial'
 });
 
 
@@ -201,6 +204,50 @@ var group_rating_trial = magpieViews.view_generator(
                   <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].option2}</strong>
               </div>`;
     },
+  }
+);
+
+
+var dilemma_trial = magpieViews.view_generator(
+  'rating_scale',
+  {
+    // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    trials: trial_info.dilemma.length,
+    // name should be identical to the variable name
+    name: 'dilemma_trial',
+    data: trial_info.dilemma
+    // you can add custom functions at different stages through a view's life cycle
+    /*hook: {
+        after_response_enabled: check_response
+    }*/
+  },
+  {
+    stimulus_container_generator: function (config, CT) {
+      return `<div class='magpie-view'>
+        <h1 class='magpie-view-title'>${config.title}</h1>
+        <p class='magpie-view-question'>${config.data[CT].question}</p>
+        <p class='magpie-view-question'>${get_group_decisions()}</p>
+      </div>`;
+    },
+    answer_container_generator: function(config, CT) {
+      return `<p class='magpie-view-question'></p>
+              <div class='magpie-view-answer-container'>
+                  <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option1}</strong>
+                  <label for="1" class='magpie-response-rating'>-3</label>
+                  <input type="radio" name="answer" id="3" value="-3" />
+                  <label for="2" class='magpie-response-rating'>-2</label>
+                  <input type="radio" name="answer" id="4" value="-2" />
+                  <label for="3" class='magpie-response-rating'>-1</label>
+                  <input type="radio" name="answer" id="5" value="-1" />
+                  <label for="4" class='magpie-response-rating'>1</label>
+                  <input type="radio" name="answer" id="7" value="1" />
+                  <label for="5" class='magpie-response-rating'>2</label>
+                  <input type="radio" name="answer" id="8" value="2" />
+                  <label for="6" class='magpie-response-rating'>3</label>
+                  <input type="radio" name="answer" id="9" value="3" />
+                  <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option2}</strong>
+              </div>`;
+    }
   }
 );
 

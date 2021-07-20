@@ -5,6 +5,8 @@
 *
 */
 const coin = _.sample(["head", "tail"]); // You can determine global (random) parameters here
+const outgroup = _.sample([true, false]);
+const group_action = _.sample(["call", "nothing"]);
 
 var important_topic;
 var group_rating_trial;
@@ -103,4 +105,51 @@ const initialize_trials = function() {
             after_response_enabled: check_response
         }*/
       });
+}
+
+const get_group_decisions =function() {
+    if(outgroup) {
+        if (group_action == "call") {
+            return(`<br />
+                    <strong>In the previous study:</strong>
+                    <br />
+                    <br />
+                    <span>&#8226;</span> approximately 60% of participants who agreed with you about ${important_topic}
+                    chose to call the police and report the robber.`);
+        }
+        else {
+            return(`<br />
+                    <strong>In the previous study:</strong>
+                    <br />
+                    <br />
+                    <span>&#8226;</span> approximately 60% of participants who agreed with you about ${important_topic}
+                    chose to do nothing and leave the robber alone.`);
+        }
+        
+    }
+    else {
+        if (group_action == "call") {
+            return(`<br />
+                    <strong>In the previous study:</strong>
+                    <br />
+                    <br />
+                    <span>&#8226;</span> approximately 60% of participants who agreed with you about ${important_topic}
+                    chose to call the police and report the robber.
+                    <br />
+                    <span>&#8226;</span> approximately 85% of participants who disagreed with you about ${important_topic}
+                    chose to do nothing and leave the robber alone.`);
+        }
+        else {
+            return(`<br />
+                    <strong>In the previous study:</strong>
+                    <br />
+                    <br />
+                    <span>&#8226;</span> approximately 60% of participants who agreed with you about ${important_topic}
+                    chose to do nothing and leave the robber alone.
+                    <br />
+                    <span>&#8226;</span> approximately 85% of participants who disagreed with you about ${important_topic}
+                    chose to call the police and report the robber.`);
+        }
+    }
+    
 }

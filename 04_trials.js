@@ -4,7 +4,7 @@
 var trial_info = {
     topic_choice: [
         {
-            question: "What's most important topic for you?",
+            question: "What's the most important topic for you?",
             option1: 'Gun control',
             option2: 'Feminism',
             option3: 'Donald Trump',
@@ -70,6 +70,13 @@ var trial_info = {
             question: "Religious organizations should be taxed",
             option1: "strongly disagree",
             option2: "strongly agree"
+        }
+    ],
+    dilemma: [
+        {
+            question: "Imagine you have witnessed a man rob a bank. However, you then saw him do something unexpected with the money. He donated it all to a run-down orphanage that would benefit greatly from the money. You must decide whether to call the police and report the robber or do nothing and leave the robber alone.",
+            option1: "Definitely call the police and report the robber",
+            option2: "Definitely do nothing and leave the robber alone"
         }
     ]
 };
