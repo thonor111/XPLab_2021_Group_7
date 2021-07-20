@@ -104,7 +104,7 @@ const initialize_trials = function() {
         /*hook: {
             after_response_enabled: check_response
         }*/
-      });
+    });
 }
 
 const get_group_decisions =function() {

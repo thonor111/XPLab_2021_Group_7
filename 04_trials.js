@@ -96,4 +96,114 @@ var trial_info = {
             expected: 'Participants chose which action they preferred'
         }
     ],
+    identification: [
+        {
+            topic: "Gun control",
+            question: "I identify with Pro-Gun Enthusiasts",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Feminism",
+            question: "I identify with Feminists",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Donald Trump",
+            question: "I identify with Trump Enthusiasts",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Immigration and Dreamers",
+            question: "I identify with Immigration supporters",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Transgender rights",
+            question: "I identify with Transgender allies",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Drug legalization",
+            question: "I identify with drug legalization supporters",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Colin Kaepernick kneeling during the national anthem",
+            question: "I identify with supporters of Colin Kaepernick kneeling during the national anthem",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Buying and wearing fur",
+            question: "I identify with Pro-Fur Enthusiasts",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Taxing religious organization",
+            question: "I identify with relegion-taxing supporters",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Gun control",
+            question: "I identify with Anti-Gun Advocates",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Feminism",
+            question: "I identify with Anti-Feminism Advocates",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Donald Trump",
+            question: "I identify with Anti-Trump Advocates",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Immigration and Dreamers",
+            question: "I identify with Immigration opposers",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Transgender rights",
+            question: "I identify with Transgender opposers",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Drug legalization",
+            question: "I identify with drug legalization opposers",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Colin Kaepernick kneeling during the national anthem",
+            question: "I identify with opposers of Colin Kaepernick kneeling during the national anthem",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Buying and wearing fur",
+            question: "I identify with Anti-Fur Advocates",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+        {
+            topic: "Taxing religious organization",
+            question: "I identify with relegion-taxing opposers",
+            option1: "strongly disagree",
+            option2: "strongly agree"
+        },
+    ]
 };

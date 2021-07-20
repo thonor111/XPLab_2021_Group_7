@@ -322,6 +322,17 @@ const attention_trial = magpieViews.view_generator(
   }
 );
 
+const identification_trial = magpieViews.view_generator(
+  "sentence_choice",
+  {
+    // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    trials: trial_info.identification.length,
+    // name should be identical to the variable name
+    name: 'identification_trial',
+    data: trial_info.identification
+  }
+);
+
 /*
 const topic_choice_trial = magpieViews.view_generator('sentence_choice', {
   // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
