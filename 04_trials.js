@@ -13,7 +13,7 @@ var trial_info = {
             option6: 'Drug legalization',
             option7: 'Colin Kaepernick kneeling during the national anthem',
             option8: 'Buying and wearing fur',
-            option9: 'Taxing religious organization',
+            option9: 'Taxing religious organization'
         }
     ],
     group_rating: [
@@ -42,7 +42,7 @@ var trial_info = {
             option2: "strongly agree"
         },
         {
-            topic: "Transgender Rights",
+            topic: "Transgender rights",
             question: "Transgender people should be allowed to use the bathrooms of the gender they identify as",
             option1: "strongly disagree",
             option2: "strongly agree"
@@ -85,5 +85,15 @@ var trial_info = {
             option1: "I have a very bad feeling",
             option2: "I have a very good feeling"
         }
-    ]
+    ],
+    attention: [
+        {
+            question: "We were following up on a previous study in this task. Given what we described in the instructions, which of the following is true about the previous study?",
+            option1: 'Participants chose which action they preferred',
+            option2: 'Due to a computer error, participants were not allocated equally to imagine performing the different actions',
+            option3: 'No data was saved during the experiment.',
+            option4: 'The participants completed the experiment with their eyes closed.',
+            expected: 'Participants chose which action they preferred'
+        }
+    ],
 };

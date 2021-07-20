@@ -21,6 +21,7 @@ $("document").ready(function() {
             instructions,
             dilemma_trial,
             feeling_trial,
+            attention_trial,
             post_test,
             thanks,
         ],

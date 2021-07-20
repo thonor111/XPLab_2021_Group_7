@@ -150,7 +150,6 @@ const topic_choice_trial = magpieViews.view_generator(
   }
 );
 
-const hasTopic = (element) => element.topic == important_topic;
 
 var group_rating_trial = magpieViews.view_generator(
   'rating_scale',
@@ -234,17 +233,17 @@ const dilemma_trial = magpieViews.view_generator(
               <div class='magpie-view-answer-container'>
                   <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option1}</strong>
                   <label for="1" class='magpie-response-rating'>-3</label>
-                  <input type="radio" name="answer" id="3" value="-3" />
+                  <input type="radio" name="answer" id="1" value="-3" />
                   <label for="2" class='magpie-response-rating'>-2</label>
-                  <input type="radio" name="answer" id="4" value="-2" />
+                  <input type="radio" name="answer" id="2" value="-2" />
                   <label for="3" class='magpie-response-rating'>-1</label>
-                  <input type="radio" name="answer" id="5" value="-1" />
+                  <input type="radio" name="answer" id="3" value="-1" />
                   <label for="4" class='magpie-response-rating'>1</label>
-                  <input type="radio" name="answer" id="7" value="1" />
+                  <input type="radio" name="answer" id="4" value="1" />
                   <label for="5" class='magpie-response-rating'>2</label>
-                  <input type="radio" name="answer" id="8" value="2" />
+                  <input type="radio" name="answer" id="5" value="2" />
                   <label for="6" class='magpie-response-rating'>3</label>
-                  <input type="radio" name="answer" id="9" value="3" />
+                  <input type="radio" name="answer" id="6" value="3" />
                   <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option2}</strong>
               </div>`;
     }
@@ -267,7 +266,7 @@ const feeling_trial = magpieViews.view_generator(
   {
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
-        <h1 class='magpie-view-title'>${"Your feeling about the decision"}</h1>
+        <h1 class='magpie-view-title'>${"Your feeling about your decision"}</h1>
         <p class='magpie-view-question'>${`<br /><br /><br /><br />`}</p>
       </div>`;
     },
@@ -276,18 +275,48 @@ const feeling_trial = magpieViews.view_generator(
               <div class='magpie-view-answer-container'>
                   <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option1}</strong>
                   <label for="1" class='magpie-response-rating'>-3</label>
-                  <input type="radio" name="answer" id="3" value="-3" />
+                  <input type="radio" name="answer" id="1" value="-3" />
                   <label for="2" class='magpie-response-rating'>-2</label>
-                  <input type="radio" name="answer" id="4" value="-2" />
+                  <input type="radio" name="answer" id="2" value="-2" />
                   <label for="3" class='magpie-response-rating'>-1</label>
-                  <input type="radio" name="answer" id="5" value="-1" />
+                  <input type="radio" name="answer" id="3" value="-1" />
                   <label for="4" class='magpie-response-rating'>1</label>
-                  <input type="radio" name="answer" id="7" value="1" />
+                  <input type="radio" name="answer" id="4" value="1" />
                   <label for="5" class='magpie-response-rating'>2</label>
-                  <input type="radio" name="answer" id="8" value="2" />
+                  <input type="radio" name="answer" id="5" value="2" />
                   <label for="6" class='magpie-response-rating'>3</label>
-                  <input type="radio" name="answer" id="9" value="3" />
+                  <input type="radio" name="answer" id="6" value="3" />
                   <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option2}</strong>
+              </div>`;
+    }
+  }
+);
+
+const attention_trial = magpieViews.view_generator(
+  "sentence_choice",
+  {
+    // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
+    trials: trial_info.attention.length,
+    // name should be identical to the variable name
+    name: 'attention_trial',
+    data: trial_info.attention
+  },
+  {
+    stimulus_container_generator: function (config, CT) {
+      return `<div class='magpie-view'>
+              </div>`;
+    },
+    answer_container_generator: function(config, CT) {
+      return `<div class='magpie-view-answer-container'>
+                  <p class='magpie-view-question'>${config.data[CT].question}</p>
+                  <label for='s1' class='magpie-response-sentence'>${config.data[CT].option1}</label>
+                  <input type='radio' name='answer' id='s1' value="${config.data[CT].option1}" />
+                  <label for='s2' class='magpie-response-sentence'>${config.data[CT].option2}</label>
+                  <input type='radio' name='answer' id='s2' value="${config.data[CT].option2}" />
+                  <label for='s3' class='magpie-response-sentence'>${config.data[CT].option3}</label>
+                  <input type='radio' name='answer' id='s3' value="${config.data[CT].option3}" />
+                  <label for='s4' class='magpie-response-sentence'>${config.data[CT].option4}</label>
+                  <input type='radio' name='answer' id='s4' value="${config.data[CT].option4}" />
               </div>`;
     }
   }
