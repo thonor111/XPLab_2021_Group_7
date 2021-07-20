@@ -171,7 +171,36 @@ var group_rating_trial = magpieViews.view_generator(
             <div class='magpie-view-stimulus magpie-nodisplay'></div>
         </div>
       </div>`;
-    }
+    },
+    answer_container_generator: function(config, CT) {
+      return `<p class='magpie-view-question'>${config.data[CT].question}</p>
+              <div class='magpie-view-answer-container'>
+                  <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].option1}</strong>
+                  <label for="1" class='magpie-response-rating'>-5</label>
+                  <input type="radio" name="answer" id="1" value="-5" />
+                  <label for="2" class='magpie-response-rating'>-4</label>
+                  <input type="radio" name="answer" id="2" value="-4" />
+                  <label for="3" class='magpie-response-rating'>-3</label>
+                  <input type="radio" name="answer" id="3" value="-3" />
+                  <label for="4" class='magpie-response-rating'>-2</label>
+                  <input type="radio" name="answer" id="4" value="-2" />
+                  <label for="5" class='magpie-response-rating'>-1</label>
+                  <input type="radio" name="answer" id="5" value="-1" />
+                  <label for="6" class='magpie-response-rating'>0</label>
+                  <input type="radio" name="answer" id="6" value="0" />
+                  <label for="7" class='magpie-response-rating'>1</label>
+                  <input type="radio" name="answer" id="7" value="1" />
+                  <label for="8" class='magpie-response-rating'>2</label>
+                  <input type="radio" name="answer" id="8" value="2" />
+                  <label for="9" class='magpie-response-rating'>3</label>
+                  <input type="radio" name="answer" id="9" value="3" />
+                  <label for="10" class='magpie-response-rating'>4</label>
+                  <input type="radio" name="answer" id="10" value="4" />
+                  <label for="11" class='magpie-response-rating'>5</label>
+                  <input type="radio" name="answer" id="11" value="5" />
+                  <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].option2}</strong>
+              </div>`;
+    },
   }
 );
 
