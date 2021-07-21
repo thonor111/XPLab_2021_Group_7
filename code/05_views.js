@@ -26,7 +26,9 @@ const intro = magpieViews.view_generator("intro", {
   text: `Welcome to our survey.
             <br />
             <br />
-            This is asurrvey of group 7 of the course "Experimental Psychology Lab" from 2021 from the university Osnabrück.
+            This is a survey of group 7 of the course "Experimental Psychology Lab" from 2021 from the university Osnabrück.
+            <br />
+            It will take approximately 2 minutes.
             <br />
             <br />
             Please fill all fields as asked.`,
@@ -166,6 +168,7 @@ const topic_choice_trial = magpieViews.view_generator(
     trials: trial_info.topic_choice.length,
     // name should be identical to the variable name
     name: 'topic_choice_trial',
+    title: 'Important topic',
     data: trial_info.topic_choice,
     // you can add custom functions at different stages through a view's life cycle
     hook: {
@@ -175,6 +178,7 @@ const topic_choice_trial = magpieViews.view_generator(
   {
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
+                <h1 class='magpie-view-title'>${config.title}</h1>
               </div>`;
     },
     answer_container_generator: function(config, CT) {
@@ -292,6 +296,7 @@ const dilemma_trial = magpieViews.view_generator(
     trials: trial_info.dilemma.length,
     // name should be identical to the variable name
     name: 'dilemma_trial',
+    title: 'Moral dilemma',
     data: trial_info.dilemma
     // you can add custom functions at different stages through a view's life cycle
     /*hook: {
@@ -378,11 +383,13 @@ const attention_trial = magpieViews.view_generator(
     trials: trial_info.attention.length,
     // name should be identical to the variable name
     name: 'attention_trial',
+    title: 'Question about our procedure',
     data: trial_info.attention
   },
   {
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
+                <h1 class='magpie-view-title'>${config.title}</h1>
               </div>`;
     },
     answer_container_generator: function(config, CT) {
@@ -415,8 +422,8 @@ const identification_trial = magpieViews.view_generator(
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
         <h1 class='magpie-view-title'>${config.title}</h1>
-        <p class='magpie-view-question'>${`<br /><br /><br /><br />`}</p>
-        <p class='magpie-view-question magpie-view-qud'>${trial_info.identification[CT].question}</p>
+        <p class='magpie-view-question'>To which extend do you agree with the following statement?<br /><br /><br /></p>
+        <p class='magpie-view-question magpie-view-qud'><strong>${trial_info.identification[CT].question}</strong></p>
       </div>`;
     },
     answer_container_generator: function(config, CT) {
