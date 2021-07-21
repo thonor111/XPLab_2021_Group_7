@@ -447,32 +447,3 @@ const identification_trial = magpieViews.view_generator(
   }
 );
 
-/*
-const topic_choice_trial = magpieViews.view_generator('sentence_choice', {
-  // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-  trials: topic_choice.length,
-  // name should be identical to the variable name
-  name: 'topic_choice',
-  data: topic_choice,
-  // you can add custom functions at different stages through a view's life cycle
-  hook: {
-      after_response_enabled: check_response
-  }
-});
-
-const dilemma_trial = magpieViews.view_generator('rating_scale', {
-  // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-  trials: rating_scale.length,
-  // name should be identical to the variable name
-  name: 'dilemma',
-  data: dilemma,
-  optionLeft: 'call the police and report the robber',
-  optionRight: 'do nothing and leave the robber alone',
-  // you can add custom functions at different stages through a view's life cycle
-  hook: {
-      after_response_enabled: check_response
-  }
-});*/
-// There are many more templates available:
-// forced_choice, slider_rating, dropdown_choice, testbox_input, rating_scale, image_selection, sentence_choice,
-// key_press, self_paced_reading and self_paced_reading_rating_scale
