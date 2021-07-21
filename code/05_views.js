@@ -49,6 +49,16 @@ const instructions = magpieViews.view_generator("instructions", {
   buttonText: 'go to the trial'
 });
 
+const instructions_group_rating = magpieViews.view_generator("instructions", {
+  trials: 1,
+  name: 'instructions_group_rating',
+  title: 'Question for your Topic',
+  text: `In the following you will se a statement about your topic.
+          <br />
+          You will have to choose to which extend you agree with the statement.`,
+  buttonText: 'go to the statement'
+});
+
 
 // In the post test questionnaire you can ask your participants addtional questions
 const post_test = magpieViews.view_generator("post_test", {
@@ -168,7 +178,7 @@ var group_rating_trial = magpieViews.view_generator(
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
         <h1 class='magpie-view-title'>${config.title}</h1>
-        <p class='magpie-view-question magpie-view-qud'>${important_topic}</p>
+        <p class='magpie-view-question magpie-view-qud'>${trial_info.group_rating[0].question}</p>
         <div class='magpie-view-stimulus-container'>
             <div class='magpie-view-stimulus magpie-nodisplay'></div>
         </div>
@@ -224,6 +234,7 @@ const dilemma_trial = magpieViews.view_generator(
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
         <h1 class='magpie-view-title'>${config.title}</h1>
+        <p class='magpie-view-question magpie-view-qud'>${trial_info.group_rating[0].question}</p>
         <p class='magpie-view-question'>${config.data[CT].question}</p>
         <p class='magpie-view-question'>${get_group_decisions()}</p>
       </div>`;

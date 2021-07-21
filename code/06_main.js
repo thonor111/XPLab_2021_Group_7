@@ -17,6 +17,7 @@ $("document").ready(function() {
         views_seq: [
             intro,
             topic_choice_trial,
+            instructions_group_rating,
             group_rating_trial,
             instructions,
             dilemma_trial,
