@@ -40,10 +40,7 @@ $("document").ready(function() {
         },
         // Here, you can specify how the progress bar should look like
         progress_bar: {
-            in: [
-                // list the view-names of the views for which you want a progress bar
-                topic_choice_trial.name,
-            ],
+            in: [],
              // Possible styles are "default", "separate" and "chunks"
             style: "separate",
             width: 100
