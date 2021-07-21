@@ -257,6 +257,31 @@ var group_rating_trial = magpieViews.view_generator(
                   <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].option2}</strong>
               </div>`;
     },
+    handle_response_function: function(config, CT, magpie, answer_container_generator, startingTime) {
+      $(".magpie-view").append(answer_container_generator(config, CT));
+
+      $("input[name=answer]").on("change", function() {
+          const RT = Date.now() - startingTime;
+          let trial_data = {
+              trial_name: config.name,
+              trial_number: CT + 1,
+              response: $("input[name=answer]:checked").val(),
+              RT: RT
+          };
+
+          trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
+
+          magpie.trial_data.push(trial_data);
+          magpie.global_data.both_norms_shown = outgroup ? 1 : 0;
+          if (group_action == "call") {
+            magpie.global_data.ingroup_descriptive_norm = -1
+          }
+          else {
+            magpie.global_data.ingroup_descriptive_norm = 1
+          }
+          magpie.findNextView();
+      });
+    }
   }
 );
 
