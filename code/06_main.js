@@ -16,6 +16,7 @@ $("document").ready(function() {
         // You have to specify all views you want to use in this experiment and the order of them
         views_seq: [
             intro,
+            post_test,
             topic_choice_trial,
             instructions_group_rating,
             group_rating_trial,
@@ -24,7 +25,6 @@ $("document").ready(function() {
             feeling_trial,
             attention_trial,
             identification_trial,
-            post_test,
             thanks,
         ],
         // Here, you can specify all information for the deployment

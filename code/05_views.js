@@ -49,39 +49,83 @@ const instructions = magpieViews.view_generator("instructions", {
   buttonText: 'go to the trial'
 });
 
-const instructions_group_rating = magpieViews.view_generator("instructions", {
-  trials: 1,
-  name: 'instructions_group_rating',
-  title: 'Question for your Topic',
-  text: `In the following you will se a statement about your topic.
-          <br />
-          You will have to choose to which extend you agree with the statement.`,
-  buttonText: 'go to the statement'
-});
+const instructions_group_rating = magpieViews.view_generator(
+  "instructions",
+  {
+    trials: 1,
+    name: 'instructions_group_rating',
+    title: 'Statement for your Topic',
+    text: `In the following you will se a statement about your topic.
+            <br />
+            You will have to choose to which extend you agree with the statement.`,
+    buttonText: 'go to the statement'
+  },
+  {
+    stimulus_container: function(config, CT) {
+      return `<div class='magpie-view'>
+                  <h1 class='magpie-view-title'>${config.title}</h1>
+                  <br>
+                  <section class="magpie-text-container">
+                      <p class="magpie-view-text">${config.text}</p>
+                  </section>
+                  <br>
+              </div>`;
+  }
+  }
+);
 
 
 // In the post test questionnaire you can ask your participants addtional questions
-const post_test = magpieViews.view_generator("post_test", {
-  trials: 1,
-  name: 'post_test',
-  title: 'Additional information',
-  text: 'Answering the following questions is optional, but your answers will help us analyze our results.'
+const post_test = magpieViews.view_generator(
+  "post_test",
+  {
+    trials: 1,
+    name: 'post_test',
+    title: 'Demographic information',
+    text: 'Answering the following questions is optional, but your answers will help us analyze our results.'
+  },
+  {
+    answer_container_generator: function(config, CT) {
+      const quest = magpieUtils.view.fill_defaults_post_test(config);
+        return `<form>
+                <p class='magpie-view-text'>
+                    <label for="age">${quest.age.title}:</label>
+                    <input type="number" name="age" min="18" max="110" id="age" />
+                </p>
+                <p class='magpie-view-text'>
+                    <label for="gender">${quest.gender.title}:</label>
+                    <select id="gender" name="gender">
+                        <option></option>
+                        <option value="${quest.gender.male}">${quest.gender.male}</option>
+                        <option value="${quest.gender.female}">${quest.gender.female}</option>
+                        <option value="${quest.gender.other}">${quest.gender.other}</option>
+                    </select>
+                </p>
+                <button id="next" class='magpie-view-button'>${config.button}</button>
+                </form>`
+      },
+      handle_response_function: function(config, CT, magpie, answer_container_generator, startingTime) {
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
-  // You can change much of what appears here, e.g., to present it in a different language, as follows:
-  // buttonText: 'Weiter',
-  // age_question: 'Alter',
-  // gender_question: 'Geschlecht',
-  // gender_male: 'männlich',
-  // gender_female: 'weiblich',
-  // gender_other: 'divers',
-  // edu_question: 'Höchster Bildungsabschluss',
-  // edu_graduated_high_school: 'Abitur',
-  // edu_graduated_college: 'Hochschulabschluss',
-  // edu_higher_degree: 'Universitärer Abschluss',
-  // languages_question: 'Muttersprache',
-  // languages_more: '(in der Regel die Sprache, die Sie als Kind zu Hause gesprochen haben)',
-  // comments_question: 'Weitere Kommentare'
-});
+        $("#next").on("click", function(e) {
+            // prevents the form from submitting
+            e.preventDefault();
+
+            // records the post test info
+            magpie.global_data.age = $("#age").val();
+            magpie.global_data.gender = $("#gender").val();
+            magpie.global_data.endTime = Date.now();
+            magpie.global_data.timeSpent =
+                (magpie.global_data.endTime -
+                    magpie.global_data.startTime) /
+                60000;
+
+            // moves to the next view
+            magpie.findNextView();
+        });
+      }
+  }
+);
 
 // The 'thanks' view is crucial; never delete it; it submits the results!
 const thanks = magpieViews.view_generator("thanks", {
@@ -168,6 +212,7 @@ var group_rating_trial = magpieViews.view_generator(
     trials: 1,
     // name should be identical to the variable name
     name: 'group_rating',
+    title: 'Statement for your topic',
     data: trial_info.group_rating
     // you can add custom functions at different stages through a view's life cycle
     /*hook: {
@@ -178,15 +223,14 @@ var group_rating_trial = magpieViews.view_generator(
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
         <h1 class='magpie-view-title'>${config.title}</h1>
-        <p class='magpie-view-question magpie-view-qud'>${trial_info.group_rating[0].question}</p>
         <div class='magpie-view-stimulus-container'>
             <div class='magpie-view-stimulus magpie-nodisplay'></div>
         </div>
+        <p class='magpie-view-question magpie-view-qud'>${trial_info.group_rating[0].question}</p>
       </div>`;
     },
     answer_container_generator: function(config, CT) {
-      return `<p class='magpie-view-question'>${config.data[CT].question}</p>
-              <div class='magpie-view-answer-container'>
+      return `<div class='magpie-view-answer-container'>
                   <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].option1}</strong>
                   <label for="1" class='magpie-response-rating'>-5</label>
                   <input type="radio" name="answer" id="1" value="-5" />
@@ -234,7 +278,6 @@ const dilemma_trial = magpieViews.view_generator(
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
         <h1 class='magpie-view-title'>${config.title}</h1>
-        <p class='magpie-view-question magpie-view-qud'>${trial_info.group_rating[0].question}</p>
         <p class='magpie-view-question'>${config.data[CT].question}</p>
         <p class='magpie-view-question'>${get_group_decisions()}</p>
       </div>`;
@@ -268,6 +311,7 @@ const feeling_trial = magpieViews.view_generator(
     trials: trial_info.feeling.length,
     // name should be identical to the variable name
     name: 'feeling_trial',
+    title: 'Your feeling about your decision',
     data: trial_info.feeling
     // you can add custom functions at different stages through a view's life cycle
     /*hook: {
@@ -277,7 +321,7 @@ const feeling_trial = magpieViews.view_generator(
   {
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
-        <h1 class='magpie-view-title'>${"Your feeling about your decision"}</h1>
+        <h1 class='magpie-view-title'>${config.title}</h1>
         <p class='magpie-view-question'>${`<br /><br /><br /><br />`}</p>
       </div>`;
     },
@@ -340,18 +384,19 @@ const identification_trial = magpieViews.view_generator(
     trials: 2,
     // name should be identical to the variable name
     name: 'identification_trial',
+    title: 'Your identification',
     data: trial_info.identification
   },
   {
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
-        <h1 class='magpie-view-title'>${"Your feeling about your decision"}</h1>
+        <h1 class='magpie-view-title'>${config.title}</h1>
         <p class='magpie-view-question'>${`<br /><br /><br /><br />`}</p>
+        <p class='magpie-view-question magpie-view-qud'>${trial_info.identification[CT].question}</p>
       </div>`;
     },
     answer_container_generator: function(config, CT) {
-      return `<p class='magpie-view-question'>${config.data[CT].question}</p>
-              <div class='magpie-view-answer-container'>
+      return `<div class='magpie-view-answer-container'>
                   <strong class='magpie-response-rating-option-small magpie-view-text'>${config.data[CT].option1}</strong>
                   <label for="1" class='magpie-response-rating'>-3</label>
                   <input type="radio" name="answer" id="1" value="-3" />
