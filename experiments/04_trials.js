@@ -110,8 +110,8 @@ var trial_info = {
             option2: "strongly agree"
         },
         {
-            topic: "Donald Trump",
-            question: "I identify with Trump Enthusiasts",
+            topic: "Joe Biden",
+            question: "I identify with Biden Enthusiasts",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
@@ -164,8 +164,8 @@ var trial_info = {
             option2: "strongly agree"
         },
         {
-            topic: "Donald Trump",
-            question: "I identify with Anti-Trump Advocates",
+            topic: "Joe Biden",
+            question: "I identify with Anti-Biden Advocates",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
