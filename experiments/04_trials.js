@@ -88,7 +88,7 @@ var trial_info = {
     ],
     attention: [
         {
-            question: "We were following up on a previous study in this task. Given what we described in the instructions, which of the following is true about the previous study?",
+            question: "As mentioned before, this study is a follow-up to a previous study. Given the information provided in the instructions, which of the following statements about the previous study are true?",
             option1: 'Participants chose which action they preferred',
             option2: 'Due to a computer error, participants were not allocated equally to imagine performing the different actions',
             option3: 'No data was saved during the experiment.',
