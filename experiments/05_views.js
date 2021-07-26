@@ -26,27 +26,39 @@ const intro = magpieViews.view_generator("intro", {
   text: `Welcome to our survey.
             <br />
             <br />
-            This is a survey of group 7 of the course "Experimental Psychology Lab" from 2021 from the university Osnabrück.
+            This survey is being conducted by group 7 of the course “Experimental Psychology Lab” at the University of Osnabrück in 2021.
             <br />
-            It will take approximately 2 minutes.
+            It will take approximately 2 minutes to complete and is completely voluntary.
+            <br />
+            You may stop the survey at any time if you feel unwilling to continue.
+            In this case, no data will be stored.
             <br />
             <br />
-            Please fill all fields as asked.`,
+            Your participation is greatly appreciated.`,
   buttonText: 'begin the experiment'
+});
+
+const first_instructions = magpieViews.view_generator("instructions", {
+  trials: 1,
+  name: 'first_instructions',
+  title: 'About this survey',
+  text: `In this survey we will ask you to select which out of the nine social issues listed, 
+          you care about most. We will then ask about your stance on a specific statement which is based on the topic you selected. 
+          After that, we will present you with a moral dilemma and ask you to choose one of two possible actions`,
+  buttonText: 'go to the trial'
 });
 
 // For most tasks, you need instructions views
 const instructions = magpieViews.view_generator("instructions", {
   trials: 1,
   name: 'instructions',
-  title: 'General Instructions',
+  title: 'Instruction on moral dilemma',
   text: `We are following up on a previously published paper that looked at how people feel about moral dilemmas.
           <br />
-          In the previous paper, a moral dilemma was described that involved two possible courses of actions.
-          Participants chose which action they preferred and had to rate how they would feel about performing that action.
+          The previous paper introduced a moral dilemma which involved two different courses of action.
           <br />
           In this study, you will be presented with a scenario describing a moral dilemma.
-          You will choose which action you would take and then provide a rating of how good or bad you imagine you would feel after taking that action.`,
+          You will be asked to choose which of the two possible actions you would prefer to take and then provide a rating of how good or bad you imagine you would feel after taking that action.`,
   buttonText: 'go to the trial'
 });
 
@@ -55,10 +67,10 @@ const instructions_group_rating = magpieViews.view_generator(
   {
     trials: 1,
     name: 'instructions_group_rating',
-    title: 'Statement for your Topic',
+    title: 'Your Topic’s Statement',
     text: `In the following you will se a statement about your topic.
             <br />
-            You will have to choose to which extend you agree with the statement.`,
+            You will be asked to choose to which extent you agree or disagree with the statement.`,
     buttonText: 'go to the statement'
   },
   {
@@ -215,7 +227,7 @@ var group_rating_trial = magpieViews.view_generator(
     trials: 1,
     // name should be identical to the variable name
     name: 'group_rating',
-    title: 'Statement for your topic',
+    title: 'Your Topic’s Statement',
     data: trial_info.group_rating
     // you can add custom functions at different stages through a view's life cycle
     /*hook: {

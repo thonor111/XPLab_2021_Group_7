@@ -11,8 +11,8 @@ var trial_info = {
             option4: 'Immigration and Dreamers',
             option5: 'Transgender rights',
             option6: 'Drug legalization',
-            option7: 'Colin Kaepernick kneeling during the national anthem',
-            option8: 'Buying and wearing fur',
+            option7: 'The Black Lives Matter movement',
+            option8: 'Climate change',
             option9: 'Taxing religious organization'
         }
     ],
@@ -54,14 +54,14 @@ var trial_info = {
             option2: "strongly agree"
         },
         {
-            topic: "Colin Kaepernick kneeling during the national anthem",
-            question: "Colin Kaepernick was wrong to kneel during the national anthem",
+            topic: "The Black Lives Matter movement",
+            question: "African Americans are not being discriminated against",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
         {
-            topic: "Buying and wearing fur",
-            question: "Buying and wearing fur is wrong",
+            topic: "Climate change",
+            question: "We must do something about climate change",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
@@ -134,14 +134,14 @@ var trial_info = {
             option2: "strongly agree"
         },
         {
-            topic: "Colin Kaepernick kneeling during the national anthem",
-            question: "I identify with supporters of Colin Kaepernick kneeling during the national anthem",
+            topic: "The Black Lives Matter movement",
+            question: "I identify with supporters of the Black Lives Matter movement",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
         {
-            topic: "Buying and wearing fur",
-            question: "I identify with Pro-Fur Enthusiasts",
+            topic: "Climate change",
+            question: "I identify with Fridays for Future",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
@@ -188,14 +188,14 @@ var trial_info = {
             option2: "strongly agree"
         },
         {
-            topic: "Colin Kaepernick kneeling during the national anthem",
-            question: "I identify with opposers of Colin Kaepernick kneeling during the national anthem",
+            topic: "The Black Lives Matter movement",
+            question: "I identify with opposers of the Black Lives Matter movement",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
         {
-            topic: "Buying and wearing fur",
-            question: "I identify with Anti-Fur Advocates",
+            topic: "Climate change",
+            question: "I identify with climate change deniers",
             option1: "strongly disagree",
             option2: "strongly agree"
         },
