@@ -434,7 +434,7 @@ const identification_trial = magpieViews.view_generator(
     stimulus_container_generator: function (config, CT) {
       return `<div class='magpie-view'>
         <h1 class='magpie-view-title'>${config.title}</h1>
-        <p class='magpie-view-question'>To which extend do you agree with the following statement?<br /><br /><br /></p>
+        <p class='magpie-view-question'>To which extent do you agree with the following statement?<br /><br /><br /></p>
         <p class='magpie-view-question magpie-view-qud'><strong>${trial_info.identification[CT].question}</strong></p>
       </div>`;
     },
