@@ -68,7 +68,7 @@ const instructions_group_rating = magpieViews.view_generator(
     trials: 1,
     name: 'instructions_group_rating',
     title: 'Your Topic’s Statement',
-    text: `In the following you will se a statement about your topic.
+    text: `In the following you will see a statement about your topic.
             <br />
             You will be asked to choose to which extent you agree or disagree with the statement.`,
     buttonText: 'go to the statement'
