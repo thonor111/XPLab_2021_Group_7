@@ -32,6 +32,7 @@ const intro = magpieViews.view_generator("intro", {
             <br />
             You may stop the survey at any time if you feel unwilling to continue.
             In this case, no data will be stored.
+	    <br />
 	    Throughout this study you will remain <strong>anonymous</strong>.
             <br />
             <br />
