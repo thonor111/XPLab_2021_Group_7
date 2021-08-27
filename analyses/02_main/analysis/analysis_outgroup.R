@@ -40,7 +40,7 @@ useable_data <- filter(full_data,
 #Create separate dataframes for each experiment
 data1 <- useable_data[useable_data$expNum=="Exp 1",]
 data2 <- useable_data[useable_data$expNum=="Exp 2",]
-data3 <- useable_data[useable_data$expNum=="Exp 3",]
+data3 <- useable_data[useable_data$expNum=="Exp 1",]
 data4 <- useable_data[useable_data$expNum=="Exp 4",]
 
 
@@ -58,23 +58,23 @@ demographics_summary <- group_by(full_data,expNum) %>%
 
 #Frequentist Analysis----------------
 ordinal_1 <- clm(as.factor(response)~ingroupNorm*bothShown, data=data1)
-ordinal_2 <- clm(as.factor(response)~ingroupNorm*bothShown, data=data2)
-ordinal_2_onlyStrong <- clm(as.factor(response)~ingroupNorm*bothShown, data = subset(data2, 
-                                                                                     !RepublicanRating%in%c(3,4,5,6,7) |
-                                                                                       !DemocraticRating%in%c(3,4,5,6,7)))
+#ordinal_2 <- clm(as.factor(response)~ingroupNorm*bothShown, data=data2)
+#ordinal_2_onlyStrong <- clm(as.factor(response)~ingroupNorm*bothShown, data = subset(data2, 
+                                                                                      !RepublicanRating%in%c(3,4,5,6,7) |
+                                                                                        !DemocraticRating%in%c(3,4,5,6,7)))
 ordinal_3 <- clm(as.factor(response)~ingroupNorm*bothShown, data=data3)
-ordinal_4 <- clm(as.factor(response)~ingroupNorm*bothShown, data=data4)
+#ordinal_4 <- clm(as.factor(response)~ingroupNorm*bothShown, data=data4)
 
 
 source("functions/produce_mean_and_count_bar_plot.R")
 plot_1 <- produce_mean_and_count_bar_plot(data1, bar_width_means=0.5, bar_width_response=0.3)
 ggsave(file="plot_1.png", plot=plot_1, width=190, height = 110, units="mm")  
-plot_2 <- produce_mean_and_count_bar_plot(data2, bar_width_means=0.5, bar_width_response=0.3)
-ggsave(file="plot_2.png", plot=plot_2, width=190, height = 110, units="mm")  
+#plot_2 <- produce_mean_and_count_bar_plot(data2, bar_width_means=0.5, bar_width_response=0.3)
+#ggsave(file="plot_2.png", plot=plot_2, width=190, height = 110, units="mm")  
 plot_3 <- produce_mean_and_count_bar_plot(data3, bar_width_means=0.5, bar_width_response=0.3)
 ggsave(file="plot_3.png", plot=plot_3, width=190, height = 110, units="mm")  
-plot_4 <- produce_mean_and_count_bar_plot(data4, bar_width_means=0.5, bar_width_response=0.3)
-ggsave(file="plot_4.png", plot=plot_4, width=190, height = 110, units="mm")  
+#plot_4 <- produce_mean_and_count_bar_plot(data4, bar_width_means=0.5, bar_width_response=0.3)
+#ggsave(file="plot_4.png", plot=plot_4, width=190, height = 110, units="mm")  
 
 
 #Bayesian analysis------------
@@ -86,26 +86,26 @@ useable_data <- useable_data %>%
          )
 stan_data_all <- as.list(c(useable_data, N = dim(useable_data)[1]))
 stan_data1 <- as.list(c(filter(useable_data, expNum=="Exp 1"), N=sum(useable_data$expNum=="Exp 1")))
-stan_data2 <- as.list(c(filter(useable_data, expNum=="Exp 2"), N=sum(useable_data$expNum=="Exp 2")))
-stan_data3 <- as.list(c(filter(useable_data, expNum=="Exp 3"), N=sum(useable_data$expNum=="Exp 3")))
-stan_data4 <- as.list(c(filter(useable_data, expNum=="Exp 4"), N=sum(useable_data$expNum=="Exp 4")))
+#stan_data2 <- as.list(c(filter(useable_data, expNum=="Exp 2"), N=sum(useable_data$expNum=="Exp 2")))
+stan_data3 <- as.list(c(filter(useable_data, expNum=="Exp 1"), N=sum(useable_data$expNum=="Exp 1")))
+#stan_data4 <- as.list(c(filter(useable_data, expNum=="Exp 4"), N=sum(useable_data$expNum=="Exp 4")))
 
 
 #--Fit models
-fit_SCT_1 <- stan(file = "analysis/stan_models/SCT.stan", data=stan_data1, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
-fit_herding_1 <- stan(file = "analysis/stan_models/herding.stan", data=stan_data1, iter=10000, chains=4, control=list(adapt_delta = 0.99))
+fit_SCT_1 <- stan(file = "stan_models/SCT.stan", data=stan_data1, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
+fit_herding_1 <- stan(file = "stan_models/herding.stan", data=stan_data1, iter=10000, chains=4, control=list(adapt_delta = 0.99))
 
-fit_SCT_2 <- stan(file = "analysis/stan_models/SCT.stan", data=stan_data2, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
-fit_herding_2 <- stan(file = "analysis/stan_models/herding.stan", data=stan_data2, iter=10000, chains=4, control=list(adapt_delta = 0.99))
+#fit_SCT_2 <- stan(file = "stan_models/SCT.stan", data=stan_data2, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
+#fit_herding_2 <- stan(file = "stan_models/herding.stan", data=stan_data2, iter=10000, chains=4, control=list(adapt_delta = 0.99))
 
-fit_SCT_3 <- stan(file = "analysis/stan_models/SCT.stan", data=stan_data3, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
-fit_herding_3 <- stan(file = "analysis/stan_models/herding.stan", data=stan_data3, iter=10000, chains=4, control=list(adapt_delta = 0.99))
+fit_SCT_3 <- stan(file = "stan_models/SCT.stan", data=stan_data3, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
+fit_herding_3 <- stan(file = "stan_models/herding.stan", data=stan_data3, iter=10000, chains=4, control=list(adapt_delta = 0.99))
 
-fit_SCT_4 <- stan(file = "analysis/stan_models/SCT.stan", data=stan_data4, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
-fit_herding_4 <- stan(file = "analysis/stan_models/herding.stan", data=stan_data4, iter=10000, chains=4, control=list(adapt_delta = 0.99))
+#fit_SCT_4 <- stan(file = "stan_models/SCT.stan", data=stan_data4, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
+#fit_herding_4 <- stan(file = "stan_models/herding.stan", data=stan_data4, iter=10000, chains=4, control=list(adapt_delta = 0.99))
 
-fit_SCT_all <- stan(file = "analysis/stan_models/SCT.stan", data=stan_data_all, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
-fit_herding_all <- stan(file = "analysis/stan_models/herding.stan", data=stan_data_all, iter=10000, chains=4, control=list(adapt_delta = 0.99))
+fit_SCT_all <- stan(file = "stan_models/SCT.stan", data=stan_data_all, iter=10000, chains=4, seed = 123, control=list(adapt_delta = 0.99))
+fit_herding_all <- stan(file = "stan_models/herding.stan", data=stan_data_all, iter=10000, chains=4, control=list(adapt_delta = 0.99))
 
 
 #----Check diagnostics
@@ -116,17 +116,17 @@ marg_lik_SCT_1 <- bridge_sampler(samples = fit_SCT_1)
 marg_lik_herding_1 <- bridge_sampler(samples = fit_herding_1)
 bf(marg_lik_herding_1,marg_lik_SCT_1)
 
-marg_lik_SCT_2 <- bridge_sampler(samples = fit_SCT_2)
-marg_lik_herding_2 <- bridge_sampler(samples = fit_herding_2)
-bf(marg_lik_herding_2,marg_lik_SCT_2)
+#marg_lik_SCT_2 <- bridge_sampler(samples = fit_SCT_2)
+#marg_lik_herding_2 <- bridge_sampler(samples = fit_herding_2)
+#bf(marg_lik_herding_2,marg_lik_SCT_2)
 
 marg_lik_SCT_3 <- bridge_sampler(samples = fit_SCT_3)
 marg_lik_herding_3 <- bridge_sampler(samples = fit_herding_3)
 bf(marg_lik_herding_3,marg_lik_SCT_3)
 
-marg_lik_SCT_4 <- bridge_sampler(samples = fit_SCT_4)
-marg_lik_herding_4 <- bridge_sampler(samples = fit_herding_4)
-bf(marg_lik_herding_4,marg_lik_SCT_4)
+#marg_lik_SCT_4 <- bridge_sampler(samples = fit_SCT_4)
+#marg_lik_herding_4 <- bridge_sampler(samples = fit_herding_4)
+#bf(marg_lik_herding_4,marg_lik_SCT_4)
 
 marg_lik_SCT_all <- bridge_sampler(samples = fit_SCT_all)
 marg_lik_herding_all <- bridge_sampler(samples = fit_herding_all)
@@ -134,19 +134,19 @@ bf(marg_lik_herding_all,marg_lik_SCT_all)
 
 
 #Create prior-posterior plots-------
-source("analysis/plot_priors_posteriors.R")
+source("plot_priors_posteriors.R")
 
 
 #Plot which issues people cared about and the extent to which they agreed with them-------
 issue_plot_3 <- ggplot(data3, aes(x=factor(topIssue, labels = c("Gun \n control", 
-                                                "Feminism", 
-                                                "Donald \n Trump", 
-                                                "Immigration",
-                                                "Transgender \n rights",
-                                                "Drug \n legalization",
-                                                "Colin \n Kaepernick",
-                                                "Fur is \n wrong",
-                                                "Religion \n Tax")),
+                                                                "Feminism", 
+                                                                "Joe \n Biden", 
+                                                                "Immigration",
+                                                                "Transgender \n rights",
+                                                                "Drug \n legalization",
+                                                                "The Black Lives \n Matter movement",
+                                                                "Climate \n change",
+                                                                "Religion \n Tax")),
                   y = topIssueRating, 
                   colour = factor(topIssue),
                   fill = factor(topIssue))) + 
@@ -156,20 +156,20 @@ issue_plot_3 <- ggplot(data3, aes(x=factor(topIssue, labels = c("Gun \n control"
   scale_y_continuous(breaks=c(0,5,10), labels = c("Strongly disagree", "Neutral", "Strongly agree"))
 ggsave("issue_plot_3.png", issue_plot_3, width=34, height=13, units="cm")
 
-issue_plot_4 <- ggplot(data4, aes(x=factor(topIssue, labels = c("Gun \n control", 
-                                                                "Feminism", 
-                                                                "Donald \n Trump", 
-                                                                "Immigration",
-                                                                "Transgender \n rights",
-                                                                "Drug \n legalization",
-                                                                "Colin \n Kaepernick",
-                                                                "Fur is \n wrong",
-                                                                "Religion \n Tax")),
-                                  y = topIssueRating, 
-                                  colour = factor(topIssue),
-                                  fill = factor(topIssue))) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.15) +
-  labs(x = "Issue", y="Agreement") + 
-  guides(color=FALSE, fill=FALSE)+
-  scale_y_continuous(breaks=c(0,5,10), labels = c("Strongly disagree", "Neutral", "Strongly agree"))
-ggsave("issue_plot_4.png", issue_plot_4, width=34, height=13, units="cm")
+# issue_plot_4 <- ggplot(data4, aes(x=factor(topIssue, labels = c("Gun \n control",
+#                                                                 "Feminism",
+#                                                                 "Joe \n Biden",
+#                                                                 "Immigration",
+#                                                                 "Transgender \n rights",
+#                                                                 "Drug \n legalization",
+#                                                                 "The Black Lives \n Matter movement",
+#                                                                 "Climate \n change",
+#                                                                 "Religion \n Tax")),
+#                                   y = topIssueRating,
+#                                   colour = factor(topIssue),
+#                                   fill = factor(topIssue))) +
+#   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.15) +
+#   labs(x = "Issue", y="Agreement") +
+#   guides(color=FALSE, fill=FALSE)+
+#   scale_y_continuous(breaks=c(0,5,10), labels = c("Strongly disagree", "Neutral", "Strongly agree"))
+# ggsave("issue_plot_4.png", issue_plot_4, width=34, height=13, units="cm")
