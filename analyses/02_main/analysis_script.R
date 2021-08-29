@@ -16,7 +16,7 @@ ggsave(file="barplot.png", plot=barplot, width=190, height = 110, units="mm")
 # plot the chosen issues and their rating
 source("functions/issue_plot.R")
 issueplot <- issue_plot(fulldata)
-ggsave(file="issueplot.png",plot = issueplot, width=300, height = 110, units="mm")
+ggsave(file="issueplot.png",plot = issueplot, width=500, height = 110, units="mm")
 
 # data as list for stan models
 data_list <- as.list(c(fulldata, N = dim(fulldata)[1]))

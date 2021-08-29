@@ -43,7 +43,7 @@ extracted_herding_posteriors <- data.frame(rstan::extract(fit_brms_one)[c("bIn",
 
 
 #Create plots for each experiment
-prior_posterior_plots <- lapply(1:2, function(x){
+prior_posterior_plots <- lapply(1:1, function(x){
   #Combine needed data
   prior_posterior_data <- rbind(extracted_SCT_priors, extracted_herding_priors, extracted_SCT_posteriors, extracted_herding_posteriors)
   prior_posterior_data <- gather(prior_posterior_data, key=parameter, value=value, -model, -info)
@@ -70,10 +70,10 @@ prior_posterior_plots <- lapply(1:2, function(x){
     labs(y="Parameter", x="log OR")+
     coord_flip()
   return(prior_posterior_plot)
-})
+}
 
 
-for(i in 1:2){
+for(i in 1:1){
   ggsave(file=paste("prior_posterior_plot_", i, ".png", sep=""), plot=prior_posterior_plots[[i]], width=18, height=10, units="cm", dpi=600)
 }
   
