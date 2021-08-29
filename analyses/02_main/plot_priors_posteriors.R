@@ -70,7 +70,7 @@ prior_posterior_plots <- lapply(1:1, function(x){
     labs(y="Parameter", x="log OR")+
     coord_flip()
   return(prior_posterior_plot)
-}
+})
 
 
 for(i in 1:1){
