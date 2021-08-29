@@ -1,7 +1,6 @@
 data {
     int<lower=1> N;
     int<lower=0,upper=1> ingroupNorm;
-    int<lower=0,upper=1> outgroupNorm ;
     int<lower=0,upper=1> bothShown ;
     int<lower=1,upper=7> response ;
 }
@@ -19,5 +18,5 @@ model{
     bBoth ~ normal( 0 , 0.5 );
     // likelihood
     for (i in 1:N)
-    response = bIn * ingroupNorm + bBoth * bothShown + bOut * ingroupNorm * bothShown
+    response ~ bIn * ingroupNorm + bBoth * bothShown + bOut * ingroupNorm * bothShown;
     }
