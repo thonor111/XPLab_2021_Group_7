@@ -1,13 +1,5 @@
 issue_plot <- function(data) {
-plot <- ggplot(data, aes(x=factor(topIssue, labels = c("Gun \n control", 
-                                                             "Feminism", 
-                                                             "Joe \n Biden", 
-                                                             "Immigration",
-                                                             "Transgender \n rights",
-                                                             "Drug \n legalization",
-                                                             "The Black Lives \n Matter movement",
-                                                             "Climate \n change",
-                                                             "Religion \n Tax")),
+plot <- ggplot(data, aes(         x= topIssue,
                                   y = topIssueRating, 
                                   colour = factor(topIssue),
                                   fill = factor(topIssue))) + 

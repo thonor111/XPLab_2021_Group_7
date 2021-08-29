@@ -7,7 +7,6 @@ library(shinystan)
 
 #import clean data
 fulldata <- read.csv("clean_data.csv")
-data <- read.csv("short_data.csv")
 
 # plot the means in a bar plot
 source("functions/produce_mean_and_count_bar_plot.R")
@@ -16,7 +15,7 @@ ggsave(file="barplot.png", plot=barplot, width=190, height = 110, units="mm")
 
 # plot the chosen issues and their rating
 source("functions/issue_plot.R")
-issueplot <- issue_plot(data)
+issueplot <- issue_plot(fulldata)
 ggsave(file="issueplot.png",plot = issueplot, width=300, height = 110, units="mm")
 
 # data as list for stan models
@@ -25,7 +24,7 @@ data_list <- as.list(c(fulldata, N = dim(fulldata)[1]))
 # fit the first model, the alternative model
 fit_brms_one <- rstan::stan(
   # where is the Stan code
-  file = 'model_one.stan',
+  file = 'herding.stan',
   # data to supply to the Stan program
   data = data_list,
   # how many iterations of MCMC
@@ -37,7 +36,7 @@ fit_brms_one <- rstan::stan(
 # fit the second model, the self-categorization model
 fit_brms_two <- rstan::stan(
   # where is the Stan code
-  file = 'model_two.stan',
+  file = 'SCT.stan',
   # data to supply to the Stan program
   data = data_list,
   # how many iterations of MCMC
@@ -47,6 +46,9 @@ fit_brms_two <- rstan::stan(
 )
 
 # calculate marginal likelihood and from that compute the bayes factor
-marg_modelone <- bridgesampling::bridge_sampler(marg_modelone, silent = T)
-marg_modeltwo <- bridgesampling::bridge_sampler(marg_modeltwo, silent = T)
-bridgesampling::bf(marg_modelone, marg_modeltwo)
+marg_alternative_model <- bridgesampling::bridge_sampler(fit_brms_one, silent = T)
+marg_SCT_model <- bridgesampling::bridge_sampler(fit_brms_two, silent = T)
+bridgesampling::bf(marg_alternative_model, marg_SCT_model)
+
+#Create prior-posterior plots-------
+source("plot_priors_posteriors.R")
