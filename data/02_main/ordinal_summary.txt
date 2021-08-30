@@ -1,0 +1,16 @@
+ link  threshold nobs logLik  AIC    niter max.grad cond.H 
+ logit flexible  83   -144.16 304.31 5(0)  2.70e-13 1.6e+02
+
+Coefficients:
+                      Estimate Std. Error z value Pr(>|z|)
+ingroupNorm           -0.09685    0.54809  -0.177    0.860
+bothShown              0.33046    0.53783   0.614    0.539
+ingroupNorm:bothShown -0.14059    0.78457  -0.179    0.858
+
+Threshold coefficients:
+    Estimate Std. Error z value
+1|2  -1.5248     0.4108  -3.712
+2|3  -0.8216     0.3796  -2.165
+3|4  -0.3322     0.3693  -0.900
+4|5   0.2508     0.3672   0.683
+5|6   1.0369     0.3823   2.712

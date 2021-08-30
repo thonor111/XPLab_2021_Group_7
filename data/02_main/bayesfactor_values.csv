@@ -1,0 +1,14 @@
+Model,herding
+SCT,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 6.12079
+SCT_1_0.5_0.5,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 5.77507
+SCT_1_0.5_0.25,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 4.49863
+SCT_1_0.5_1,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 10.08046
+SCT_1_0.5_2,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 19.50366
+SCT_1_0_0.5,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 6.08456
+SCT_1_0_0.25,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 4.27030
+SCT_1_0_1,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 10.34595
+SCT_1_0_2,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 19.81703
+SCT_1_1_0.5,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 12.09172
+SCT_1_1_0.25,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 21.53708
+SCT_1_1_1,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 12.48846
+SCT_1_1_2,Estimated Bayes factor in favor of marg_alternative_model over marg_SCT_model: 20.60874
