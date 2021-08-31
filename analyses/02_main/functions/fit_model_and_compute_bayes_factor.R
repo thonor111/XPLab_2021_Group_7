@@ -1,3 +1,4 @@
+# stanmmodelpath couldn't be found using this function
 fit_model_and_compute_bayes_factor <- function(data, stanmodelpath)
 
 # data as list for stan models
@@ -30,4 +31,4 @@ fit_brms_two <- rstan::stan(
 # calculate marginal likelihood and from that compute the bayes factor
 marg_alternative_model <- bridgesampling::bridge_sampler(fit_brms_one, silent = T)
 marg_SCT_model <- bridgesampling::bridge_sampler(fit_brms_two, silent = T)
-return(bridgesampling::bf(marg_alternative_model, marg_SCT_model))
+bridgesampling::bf(marg_alternative_model, marg_SCT_model)

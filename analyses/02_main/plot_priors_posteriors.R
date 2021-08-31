@@ -1,4 +1,5 @@
 #NOTE: Have to run analysis_outgroup first in order to get posterior parameter estimates.
+# Copied from original and adjustet for replication of one experient
 
 #Extract priors
 model_SCT_prior = "parameters{

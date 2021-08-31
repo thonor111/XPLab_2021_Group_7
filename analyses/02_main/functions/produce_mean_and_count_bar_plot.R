@@ -1,3 +1,4 @@
+# Copied from original experiment
 produce_mean_and_count_bar_plot <- function(df, bar_width_means=0.5, bar_width_response=0.4,   arrow_length = 0.4){
   #--Find the higher response proportion so that I can rescale the other proportions relative to that. 
   response_counts = group_by(df, ingroupNorm, bothShown, response)%>%

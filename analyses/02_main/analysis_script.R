@@ -40,7 +40,7 @@ fit_brms_one <- rstan::stan(
   data = data_list,
   # how many iterations of MCMC
   iter = 10000,
-  # how many warmup steps
+  # additional parameters
   chains=4,
   seed=123,
   control=list(adapt_delta = 0.99)
@@ -54,7 +54,7 @@ fit_brms_two <- rstan::stan(
   data = data_list,
   # how many iterations of MCMC
   iter = 10000,
-  # how many warmup steps
+  # additional parameters
   chains=4,
   seed=123,
   control=list(adapt_delta = 0.99)
